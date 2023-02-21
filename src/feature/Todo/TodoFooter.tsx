@@ -4,7 +4,7 @@ import { useTheme } from '@mui/material';
 // *Store
 import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxTypedHooks';
 
-import { removeCompleted } from '../../store';
+import { removeCompleted, filterActiveTodos, filterAllTodos, filterCompletedTodos } from '../../store';
 
 const TodoFooter = () => {
 	//
@@ -15,6 +15,18 @@ const TodoFooter = () => {
 
 	function handleRemoveCompletedTodos() {
 		dispatch(removeCompleted());
+	}
+
+	function handleFilterAllTodos() {
+		dispatch(filterAllTodos());
+	}
+
+	function handleFilterCompletedTodos() {
+		dispatch(filterCompletedTodos());
+	}
+
+	function handleFilterActiveTodos() {
+		dispatch(filterActiveTodos());
 	}
 
 	const theme = useTheme();
@@ -48,10 +60,15 @@ const TodoFooter = () => {
 					},
 				}}
 			>
-				<Typography variant='body1'>All</Typography>
-				<Typography variant='body1'>Active</Typography>
-
-				<Typography variant='body1'>Completed</Typography>
+				<Box onClick={handleFilterAllTodos}>
+					<Typography variant='body1'>All</Typography>
+				</Box>
+				<Box onClick={handleFilterActiveTodos}>
+					<Typography variant='body1'>Active</Typography>
+				</Box>
+				<Box onClick={handleFilterCompletedTodos}>
+					<Typography variant='body1'>Completed</Typography>
+				</Box>
 			</Box>
 			<Box display='flex' alignItems='center' justifyContent='space-between'>
 				<Box onClick={handleRemoveCompletedTodos}>
