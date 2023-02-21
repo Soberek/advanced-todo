@@ -2,13 +2,13 @@
 
 import CustomThemeProvider from './theme';
 
-import Main from './components/Main';
+import Todo from './feature/Todo';
 
 function App() {
 	return (
 		<CustomThemeProvider>
 			<div>
-				<Main />
+				<Todo />
 			</div>
 		</CustomThemeProvider>
 	);
