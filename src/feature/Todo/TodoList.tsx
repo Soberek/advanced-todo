@@ -1,6 +1,6 @@
 import Item from './TodoItem';
 import AddItemInput from './TodoAddInput';
-import TodoFooter from './TodoFooter';
+import TodoFooter from './TodoPanel';
 import Box from '@mui/material/Box';
 
 import { useTheme } from '@mui/material';

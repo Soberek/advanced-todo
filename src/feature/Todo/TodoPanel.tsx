@@ -6,7 +6,7 @@ import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxTypedHooks'
 
 import { removeCompleted, filterActiveTodos, filterAllTodos, filterCompletedTodos } from '../../store';
 
-const TodoFooter = () => {
+const TodoPanel = () => {
 	//
 	const dispatch = useTypedDispatch();
 	const todos = useTypedSelector((state) => state.todos.todos);
@@ -88,4 +88,4 @@ const TodoFooter = () => {
 	);
 };
 
-export default TodoFooter;
+export default TodoPanel;
