@@ -5,8 +5,13 @@ import Box from '@mui/material/Box';
 
 import { useTheme } from '@mui/material';
 
+import { useTypedSelector } from '../../hooks/reduxTypedHooks';
+
 const TodoList = () => {
 	const theme = useTheme();
+
+	const todos = useTypedSelector((state) => state.todos.todos);
+
 	return (
 		<>
 			{/* Todo Add Input */}
@@ -25,9 +30,9 @@ const TodoList = () => {
 					overflow: 'hidden',
 				}}
 			>
-				<Item />
-				<Item />
-				<Item />
+				{todos.map((todo) => (
+					<Item key={todo.id} todo={todo} />
+				))}
 			</Box>
 
 			{/* Todo Footer */}
