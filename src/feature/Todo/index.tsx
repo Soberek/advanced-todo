@@ -13,7 +13,7 @@ const Main = () => {
 				height='100vh'
 				sx={{
 					backgroundImage: `
-                    linear-gradient(to bottom, rgba(255,255,255, 0) 40%, ${theme.palette.primary.dark} 60%,  ${
+                    linear-gradient(to bottom, rgba(255,255,255, 0) 30%, ${theme.palette.primary.dark} 70%,  ${
 						theme.palette.primary.dark
 					} 100%),
                     // linear-gradient(to left, rgba(255,0,0,0) 0%, ${alpha(theme.palette.primary.dark, 0.7)} 100%), 
