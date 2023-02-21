@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit/dist/createSlice';
+import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface Todo {
@@ -28,4 +28,4 @@ const todoSlice = createSlice({
 });
 
 export const { add, remove, update, complete } = todoSlice.actions;
-export default todoSlice.reducer;
+export const todoReducer = todoSlice.reducer;
