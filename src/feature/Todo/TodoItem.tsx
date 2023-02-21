@@ -18,45 +18,32 @@ const Item = () => {
 
 	return (
 		<Box
+			p={3}
 			bgcolor={theme.palette.primary.light}
-			sx={{
-				':last-child': {
-					borderBottomLeftRadius: '10px',
-					borderBottomRightRadius: '10px',
-				},
-				':first-of-type': {
-					borderTopLeftRadius: '10px',
-					borderTopRightRadius: '10px',
-				},
-			}}
+			display='flex'
+			alignItems='center'
+			onClick={() => setChecked((prev) => !prev)}
+			sx={{ cursor: 'pointer' }}
 		>
-			<Box
-				p={3}
-				display='flex'
-				alignItems='center'
-				onClick={() => setChecked((prev) => !prev)}
-				sx={{ cursor: 'pointer' }}
+			<Fab
+				aria-label='complete'
+				size='small'
+				sx={{
+					mr: 3,
+					...(checked && checkedStyle),
+				}}
 			>
-				<Fab
-					aria-label='complete'
-					size='small'
-					sx={{
-						mr: 3,
-						...(checked && checkedStyle),
-					}}
-				>
-					{checked && <CheckIcon />}
-				</Fab>
-				<Typography
-					variant='body1'
-					sx={{
-						textDecoration: checked ? 'line-through' : undefined,
-						color: checked ? theme.palette.primary.dark : theme.palette.primary.contrastText,
-					}}
-				>
-					WASHING MACHINE
-				</Typography>
-			</Box>
+				{checked && <CheckIcon />}
+			</Fab>
+			<Typography
+				variant='body1'
+				sx={{
+					textDecoration: checked ? 'line-through' : undefined,
+					color: checked ? theme.palette.primary.dark : theme.palette.primary.contrastText,
+				}}
+			>
+				WASHING MACHINE
+			</Typography>
 		</Box>
 	);
 };
