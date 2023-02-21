@@ -10,6 +10,7 @@ const TodoFooter = () => {
 	//
 	const dispatch = useTypedDispatch();
 	const todos = useTypedSelector((state) => state.todos.todos);
+	const activeFilter = useTypedSelector((state) => state.todos.filter);
 
 	const numberOfTodosLeft = todos.filter((todo) => todo.completed != true).length;
 
@@ -61,13 +62,19 @@ const TodoFooter = () => {
 				}}
 			>
 				<Box onClick={handleFilterAllTodos}>
-					<Typography variant='body1'>All</Typography>
+					<Typography variant='body1' color={activeFilter === 'ALL' ? 'secondary.light' : undefined}>
+						All
+					</Typography>
 				</Box>
 				<Box onClick={handleFilterActiveTodos}>
-					<Typography variant='body1'>Active</Typography>
+					<Typography variant='body1' color={activeFilter === 'ACTIVE' ? 'secondary.light' : undefined}>
+						Active
+					</Typography>
 				</Box>
 				<Box onClick={handleFilterCompletedTodos}>
-					<Typography variant='body1'>Completed</Typography>
+					<Typography variant='body1' color={activeFilter === 'COMPLETED' ? 'secondary.light' : undefined}>
+						Completed
+					</Typography>
 				</Box>
 			</Box>
 			<Box display='flex' alignItems='center' justifyContent='space-between'>
