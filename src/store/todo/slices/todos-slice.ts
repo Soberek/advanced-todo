@@ -37,7 +37,7 @@ const todoSlice = createSlice({
 		removeCompleted: (state) => {
 			state.todos = state.todos.filter((todo) => todo.completed !== true);
 		},
-		update: (state, action) => {},
+		// TODO: update: (state, action) => {},
 		complete: (state, action: PayloadAction<{ id: string }>) => {
 			state.todos = state.todos.map((todo) =>
 				todo.id === action.payload.id ? { ...todo, completed: !todo.completed } : todo
@@ -55,6 +55,6 @@ const todoSlice = createSlice({
 	},
 });
 
-export const { add, removeCompleted, update, complete, filterAllTodos, filterActiveTodos, filterCompletedTodos } =
+export const { add, removeCompleted, complete, filterAllTodos, filterActiveTodos, filterCompletedTodos } =
 	todoSlice.actions;
 export const todoReducer = todoSlice.reducer;

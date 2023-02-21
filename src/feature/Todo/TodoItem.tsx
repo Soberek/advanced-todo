@@ -27,6 +27,7 @@ const Item = ({ todo }: { todo: Todo }) => {
 
 	return (
 		<Box
+			className='bounce-in-fwd'
 			onClick={() => handleTodoCompletion(id)}
 			p={3}
 			bgcolor={theme.palette.primary.light}
