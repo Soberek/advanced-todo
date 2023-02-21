@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-interface Todo {
+export interface Todo {
 	id: string;
 	title: string;
+	completed: boolean;
 }
 
 interface TodoList {
@@ -11,7 +12,18 @@ interface TodoList {
 }
 
 const initialState: TodoList = {
-	todos: [],
+	todos: [
+		{
+			id: '1',
+			title: 'Zrobić 1500 godzin programowania ⏰',
+			completed: false,
+		},
+		{
+			id: '2',
+			title: 'Skupić się na tym ile robię, a nie co robię 👩‍🏭',
+			completed: true,
+		},
+	],
 };
 
 const todoSlice = createSlice({
@@ -23,7 +35,11 @@ const todoSlice = createSlice({
 		},
 		remove: (state, action) => {},
 		update: (state, action) => {},
-		complete: (state, action) => {},
+		complete: (state, action: PayloadAction<{ id: string }>) => {
+			state.todos = state.todos.map((todo) =>
+				todo.id === action.payload.id ? { ...todo, completed: !todo.completed } : todo
+			);
+		},
 	},
 });
 

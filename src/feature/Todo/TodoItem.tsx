@@ -3,14 +3,24 @@ import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 import { Typography, useTheme } from '@mui/material';
 
-// dev
-import { useState } from 'react';
+import type { Todo } from '../../store';
 
-const Item = () => {
+// *Store
+import { useTypedDispatch } from '../../hooks/reduxTypedHooks';
+import { complete } from '../../store';
+
+const Item = ({ todo }: { todo: Todo }) => {
+	// * Logic
+	const { id, title, completed } = todo;
+	const dispatch = useTypedDispatch();
+
+	function handleTodoCompletion(id: string) {
+		console.log(id);
+		dispatch(complete({ id }));
+	}
+
+	// * Style
 	const theme = useTheme();
-
-	const [checked, setChecked] = useState(false);
-
 	const checkedStyle = {
 		background: 'linear-gradient(45deg, #c52cb8 30%, red 100%)',
 		color: theme.palette.primary.main,
@@ -18,11 +28,11 @@ const Item = () => {
 
 	return (
 		<Box
+			onClick={() => handleTodoCompletion(id)}
 			p={3}
 			bgcolor={theme.palette.primary.light}
 			display='flex'
 			alignItems='center'
-			onClick={() => setChecked((prev) => !prev)}
 			sx={{ cursor: 'pointer' }}
 		>
 			<Fab
@@ -30,19 +40,19 @@ const Item = () => {
 				size='small'
 				sx={{
 					mr: 3,
-					...(checked && checkedStyle),
+					...(completed && checkedStyle),
 				}}
 			>
-				{checked && <CheckIcon />}
+				{completed && <CheckIcon />}
 			</Fab>
 			<Typography
 				variant='body1'
 				sx={{
-					textDecoration: checked ? 'line-through' : undefined,
-					color: checked ? theme.palette.primary.dark : theme.palette.primary.contrastText,
+					textDecoration: completed ? 'line-through' : undefined,
+					color: completed ? theme.palette.primary.dark : theme.palette.primary.contrastText,
 				}}
 			>
-				WASHING MACHINE
+				{title}
 			</Typography>
 		</Box>
 	);
