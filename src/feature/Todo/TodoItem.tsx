@@ -15,7 +15,6 @@ const Item = ({ todo }: { todo: Todo }) => {
 	const dispatch = useTypedDispatch();
 
 	function handleTodoCompletion(id: string) {
-		console.log(id);
 		dispatch(complete({ id }));
 	}
 

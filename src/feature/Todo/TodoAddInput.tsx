@@ -6,18 +6,38 @@ import { Typography, useTheme } from '@mui/material';
 
 // dev
 import { useState } from 'react';
+import { useTypedDispatch } from '../../hooks/reduxTypedHooks';
+import { add } from '../../store/index';
 
 const AddItemInput = () => {
 	const theme = useTheme();
 
 	const [isEditing, setIsEditing] = useState(false);
+	const [input, setInput] = useState('');
 
 	function handleEdit() {
 		setIsEditing(true);
 	}
 
 	function handleBlur() {
+		if (input) {
+			return;
+		}
 		setIsEditing(false);
+	}
+
+	function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+		setInput(e.target.value);
+	}
+
+	const dispatch = useTypedDispatch();
+
+	function handleAdd() {
+		if (input != '') {
+			dispatch(add({ title: input }));
+			setInput('');
+			setIsEditing(false);
+		}
 	}
 
 	const checkedIconStyle = {
@@ -27,25 +47,27 @@ const AddItemInput = () => {
 
 	return (
 		<Box bgcolor={theme.palette.primary.light} sx={{ borderRadius: '10px' }}>
-			<Box p={3} sx={{ cursor: 'pointer' }}>
-				<Box display='flex' alignItems='center' onClick={handleEdit} onBlur={handleBlur}>
+			<Box display='flex' alignItems='center' sx={{ cursor: 'pointer' }}>
+				<Box p={3} width='15%'>
 					<Fab
 						aria-label='complete'
 						size='small'
 						sx={{
-							mr: 3,
 							...(isEditing && checkedIconStyle),
 						}}
+						onClick={handleAdd}
 					>
 						{isEditing && <AddIcon />}
 					</Fab>
+				</Box>
 
+				<Box onBlur={handleBlur} onClick={handleEdit} display='flex' width='80%'>
 					{!isEditing && (
 						<Typography variant='body1' color='secondary.light'>
 							Create new todo...
 						</Typography>
 					)}
-					{isEditing && <TextField autoFocus sx={{ flexGrow: 1 }} />}
+					{isEditing && <TextField onChange={handleInputChange} value={input} autoFocus sx={{ flexGrow: 1 }} />}
 				</Box>
 			</Box>
 		</Box>

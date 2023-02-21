@@ -9,7 +9,6 @@ import { useTypedSelector } from '../../hooks/reduxTypedHooks';
 
 const TodoList = () => {
 	const theme = useTheme();
-
 	const todos = useTypedSelector((state) => state.todos.todos);
 
 	return (
