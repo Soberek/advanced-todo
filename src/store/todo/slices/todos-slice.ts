@@ -17,7 +17,10 @@ interface TodoList {
 const todosFromStorage = localStorage.getItem('todos');
 const persistedState = todosFromStorage ? JSON.parse(todosFromStorage) : [];
 
-const initialState: TodoList = persistedState;
+const initialState: TodoList = {
+	todos: persistedState,
+	filter: 'ALL',
+};
 
 const todoSlice = createSlice({
 	name: 'todos',
