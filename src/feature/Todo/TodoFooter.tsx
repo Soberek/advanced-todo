@@ -1,7 +1,22 @@
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material';
 
+// *Store
+import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxTypedHooks';
+
+import { removeCompleted } from '../../store';
+
 const TodoFooter = () => {
+	//
+	const dispatch = useTypedDispatch();
+	const todos = useTypedSelector((state) => state.todos.todos);
+
+	const numberOfTodosLeft = todos.filter((todo) => todo.completed != true).length;
+
+	function handleRemoveCompletedTodos() {
+		dispatch(removeCompleted());
+	}
+
 	const theme = useTheme();
 
 	return (
@@ -17,7 +32,7 @@ const TodoFooter = () => {
 		>
 			<Box display='flex' alignItems='center'>
 				<Typography variant='body1' fontWeight={400}>
-					5 items left
+					{numberOfTodosLeft} items left
 				</Typography>
 			</Box>
 			<Box
@@ -35,12 +50,15 @@ const TodoFooter = () => {
 			>
 				<Typography variant='body1'>All</Typography>
 				<Typography variant='body1'>Active</Typography>
+
 				<Typography variant='body1'>Completed</Typography>
 			</Box>
 			<Box display='flex' alignItems='center' justifyContent='space-between'>
-				<Typography variant='body1' sx={{ ':hover': { cursor: 'pointer', color: theme.palette.secondary.light } }}>
-					Clear Completed
-				</Typography>
+				<Box onClick={handleRemoveCompletedTodos}>
+					<Typography variant='body1' sx={{ ':hover': { cursor: 'pointer', color: theme.palette.secondary.light } }}>
+						Clear Completed
+					</Typography>
+				</Box>
 			</Box>
 		</Box>
 	);
