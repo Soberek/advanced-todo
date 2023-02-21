@@ -14,23 +14,10 @@ interface TodoList {
 	filter: 'ALL' | 'ACTIVE' | 'COMPLETED';
 }
 
-const initialState: TodoList = {
-	filter: 'ALL',
-	todos: [
-		{
-			id: '1',
-			title: 'Zrobić 1500 godzin programowania ⏰',
-			completed: false,
-			isEditing: false,
-		},
-		{
-			id: '2',
-			title: 'Skupić się na tym ile robię, a nie co robię 👩‍🏭',
-			completed: true,
-			isEditing: false,
-		},
-	],
-};
+const todosFromStorage = localStorage.getItem('todos');
+const persistedState = todosFromStorage ? JSON.parse(todosFromStorage) : [];
+
+const initialState: TodoList = persistedState;
 
 const todoSlice = createSlice({
 	name: 'todos',
