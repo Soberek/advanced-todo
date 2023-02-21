@@ -2,14 +2,13 @@
 
 import CustomThemeProvider from './theme';
 
-import ThemeTest from './components/ThemeTest';
+import Main from './components/Main';
 
 function App() {
 	return (
 		<CustomThemeProvider>
 			<div>
-				Hello
-				<ThemeTest />
+				<Main />
 			</div>
 		</CustomThemeProvider>
 	);
