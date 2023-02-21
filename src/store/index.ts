@@ -14,7 +14,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 store.subscribe(() => {
-	localStorage.setItem('todos', JSON.stringify(store.getState().todos));
+	localStorage.setItem('todos', JSON.stringify(store.getState().todos.todos));
 });
 /*
 !Exports
