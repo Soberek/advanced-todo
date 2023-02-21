@@ -17,15 +17,15 @@ const initialState = {
 
 const colors = {
 	black: {
-		100: '#f3f3f3',
-		200: '#a3a3a7',
-		300: '#74747c',
-		400: '#464650',
-		500: '#181824',
-		600: '#13131d',
-		700: '#0e0e16',
-		800: '#0a0a0e',
-		900: '#050507',
+		100: '#d6d6f3',
+		200: '#adaee7',
+		300: '#8585da',
+		400: '#5c5dce',
+		500: '#3334c2',
+		600: '#292a9b',
+		700: '#1f1f74',
+		800: '#14154e',
+		900: '#0a0a27',
 	},
 };
 
@@ -37,16 +37,22 @@ const lightMode = {
 		main: colors.black[100],
 	},
 	secondary: {
-		main: colors.black[100],
+		main: colors.black[400],
+	},
+	shadow: {
+		main: colors.black[800],
 	},
 };
 
 const darkMode = {
 	primary: {
-		main: colors.black[900],
+		main: colors.black[700],
 	},
 	secondary: {
-		main: colors.black[100],
+		main: colors.black[400],
+	},
+	shadow: {
+		main: colors.black[800],
 	},
 };
 
