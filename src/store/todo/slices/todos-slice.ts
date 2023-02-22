@@ -22,10 +22,6 @@ const persistedState: Todo[] = todosFromStorage
 			{ id: '2', completed: true, title: 'JULKA TO 🐶', isEditing: false },
 			{ id: '3', completed: false, title: '1500H EZ KURWY ⏰', isEditing: false },
 			{ id: '4', completed: true, title: 'JULKA TO 🐶', isEditing: false },
-			{ id: '5', completed: false, title: '1500H EZ KURWY ⏰', isEditing: false },
-			{ id: '6', completed: true, title: 'JULKA TO 🐶', isEditing: false },
-			{ id: '7', completed: false, title: '1500H EZ KURWY ⏰', isEditing: false },
-			{ id: '8', completed: true, title: 'JULKA TO 🐶', isEditing: false },
 	  ];
 
 const initialState: TodoList = {

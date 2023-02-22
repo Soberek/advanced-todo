@@ -18,9 +18,7 @@ const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 	const { id, title, completed } = todo;
 	const dispatch = useTypedDispatch();
 
-	function handleTodoCompletion(id: string) {
-		dispatch(complete({ id }));
-	}
+	const handleTodoCompletion = (id: string) => dispatch(complete({ id }));
 
 	// * Style
 	const theme = useTheme();
@@ -41,7 +39,6 @@ const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 	return (
 		<Box
 			onClick={() => handleTodoCompletion(id)}
-			// p={3}
 			bgcolor={alpha(theme.palette.primary.light, 0.8)}
 			sx={{ cursor: 'pointer' }}
 			// ! Animation !
@@ -75,6 +72,7 @@ const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 			}}
 		>
 			<Box display='flex' alignItems='center' p={3}>
+				{/* ITEM ICON */}
 				<Fab
 					aria-label='complete'
 					size='small'
@@ -85,6 +83,7 @@ const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 				>
 					{completed && <CheckIcon />}
 				</Fab>
+				{/* ITEM TITLE */}
 				<Typography
 					variant='body1'
 					sx={{

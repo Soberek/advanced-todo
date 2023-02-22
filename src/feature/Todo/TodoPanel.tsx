@@ -7,33 +7,25 @@ import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxTypedHooks'
 import { removeCompleted, filterActiveTodos, filterAllTodos, filterCompletedTodos } from '../../store';
 
 const TodoPanel = () => {
-	//
+	// *Store
 	const dispatch = useTypedDispatch();
 	const todos = useTypedSelector((state) => state.todos.todos);
 	const activeFilter = useTypedSelector((state) => state.todos.filter);
 
+	// *Logic
 	const numberOfTodosLeft = todos.filter((todo) => todo.completed != true).length;
 
-	function handleRemoveCompletedTodos() {
-		dispatch(removeCompleted());
-	}
+	const handleRemoveCompletedTodos = () => dispatch(removeCompleted());
 
-	function handleFilterAllTodos() {
-		dispatch(filterAllTodos());
-	}
+	const handleFilterAllTodos = () => dispatch(filterAllTodos());
 
-	function handleFilterCompletedTodos() {
-		dispatch(filterCompletedTodos());
-	}
+	const handleFilterCompletedTodos = () => dispatch(filterCompletedTodos());
 
-	function handleFilterActiveTodos() {
-		dispatch(filterActiveTodos());
-	}
+	const handleFilterActiveTodos = () => dispatch(filterActiveTodos());
 
 	// *Style
 	const theme = useTheme();
 	const matchesMobile = useMediaQuery('(min-width: 500px)');
-	console.log(matchesMobile);
 
 	return (
 		<Box

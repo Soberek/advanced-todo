@@ -15,30 +15,21 @@ const AddItemInput = () => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [input, setInput] = useState('');
 
-	function handleEdit() {
-		setIsEditing(true);
-	}
+	const handleEdit = () => setIsEditing(true);
 
-	function handleBlur() {
-		if (input) {
-			return;
-		}
-		setIsEditing(false);
-	}
+	const handleBlur = () => (input ? undefined : setIsEditing(false));
 
-	function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-		setInput(e.target.value);
-	}
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setInput(e.target.value);
 
 	const dispatch = useTypedDispatch();
 
-	function handleAdd() {
+	const handleAdd = () => {
 		if (input != '') {
 			dispatch(add({ title: input }));
 			setInput('');
 			setIsEditing(false);
 		}
-	}
+	};
 
 	const checkedIconStyle = {
 		background: `linear-gradient(45deg, ${theme.palette.success.dark} 50%, #fff 100%)`,
