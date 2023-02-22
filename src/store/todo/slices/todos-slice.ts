@@ -18,10 +18,8 @@ const todosFromStorage = localStorage.getItem('todos');
 const persistedState: Todo[] = todosFromStorage
 	? JSON.parse(todosFromStorage)
 	: [
-			{ id: '1', completed: false, title: '1500H EZ KURWY ⏰', isEditing: false },
-			{ id: '2', completed: true, title: 'JULKA TO 🐶', isEditing: false },
-			{ id: '3', completed: false, title: '1500H EZ KURWY ⏰', isEditing: false },
-			{ id: '4', completed: true, title: 'JULKA TO 🐶', isEditing: false },
+			{ id: '1', completed: true, title: '8h dziennej nauki 🧠📚', isEditing: false },
+			{ id: '2', completed: false, title: '1500h programowania ⏰', isEditing: false },
 	  ];
 
 const initialState: TodoList = {

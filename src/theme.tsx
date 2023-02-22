@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material';
 
 // import { colors } from '@mui/material';
-import React, { createContext, useState, useMemo } from 'react';
+import React, { createContext, useState, useMemo, useEffect } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
 /*
@@ -58,8 +58,24 @@ const darkMode = {
 
 export const ColorModeContext = createContext(initialState);
 
+type colorMode = 'light' | 'dark';
+
 const CustomThemeProvider = ({ children }: { children: React.ReactNode }) => {
-	const [mode, setMode] = useState<'light' | 'dark'>('dark');
+	const modeFromStorage = localStorage.getItem('colorMode');
+
+	let modeToSet: colorMode = modeFromStorage === 'light' ? 'light' : 'dark';
+
+	const [mode, setMode] = useState<colorMode>(modeToSet);
+
+	useEffect(() => {
+		// if (modeFromStorage === 'light' || modeFromStorage === 'dark') {
+		// 	setMode(modeFromStorage);
+		// }
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('colorMode', mode);
+	}, [mode]);
 
 	const colorMode = {
 		toggleColorMode: () => {
