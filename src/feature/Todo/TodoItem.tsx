@@ -4,6 +4,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { Typography, useTheme } from '@mui/material';
 
 import type { Todo } from '../../store';
+import { alpha } from '@mui/material';
 
 // *Store
 import { useTypedDispatch } from '../../hooks/reduxTypedHooks';
@@ -42,7 +43,7 @@ const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 		<Box
 			onClick={() => handleTodoCompletion(id)}
 			// p={3}
-			bgcolor={theme.palette.primary.light}
+			bgcolor={alpha(theme.palette.primary.light, 0.8)}
 			sx={{ cursor: 'pointer' }}
 			// ! Animation !
 			component={motion.div}
@@ -65,6 +66,7 @@ const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 			layoutId={todo.id}
 			whileHover={{
 				scale: 1.05,
+				backgroundColor: alpha(theme.palette.primary.light, 1),
 				transition: { duration: 0.05, ease: 'easeInOut' },
 			}}
 			whileTap={{
