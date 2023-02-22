@@ -10,7 +10,7 @@ function App() {
 	return (
 		<Provider store={store}>
 			<CustomThemeProvider>
-				<div>
+				<div className='app'>
 					<Todo />
 				</div>
 			</CustomThemeProvider>

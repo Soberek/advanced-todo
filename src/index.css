@@ -4,6 +4,10 @@
 	font-weight: 400;
 }
 
+html {
+	overflow-y: scroll;
+}
+
 img {
 	height: 100%;
 	width: 100%;
