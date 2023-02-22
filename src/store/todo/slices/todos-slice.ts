@@ -15,7 +15,12 @@ interface TodoList {
 }
 
 const todosFromStorage = localStorage.getItem('todos');
-const persistedState = todosFromStorage ? JSON.parse(todosFromStorage) : [];
+const persistedState: Todo[] = todosFromStorage
+	? JSON.parse(todosFromStorage)
+	: [
+			{ id: '1', completed: false, title: '1500H EZ KURWY ⏰', isEditing: false },
+			{ id: '2', completed: true, title: 'JULKA TO 🐶', isEditing: false },
+	  ];
 
 const initialState: TodoList = {
 	todos: persistedState,

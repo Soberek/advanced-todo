@@ -9,7 +9,10 @@ import type { Todo } from '../../store';
 import { useTypedDispatch } from '../../hooks/reduxTypedHooks';
 import { complete } from '../../store';
 
-const Item = ({ todo }: { todo: Todo }) => {
+// *Framer motion
+import { motion } from 'framer-motion';
+
+const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 	// * Logic
 	const { id, title, completed } = todo;
 	const dispatch = useTypedDispatch();
@@ -25,35 +28,70 @@ const Item = ({ todo }: { todo: Todo }) => {
 		color: theme.palette.primary.main,
 	};
 
+	// * Animation
+
+	const variants = {
+		custom: (custom: number) => ({
+			opacity: 1,
+			height: 'auto',
+			transition: { delay: custom },
+		}),
+	};
+
 	return (
 		<Box
-			className='bounce-in-fwd'
 			onClick={() => handleTodoCompletion(id)}
-			p={3}
+			// p={3}
 			bgcolor={theme.palette.primary.light}
-			display='flex'
-			alignItems='center'
 			sx={{ cursor: 'pointer' }}
+			// ! Animation !
+			component={motion.div}
+			variants={variants}
+			transition={{
+				delay: (idx + 1) * 0.1,
+			}}
+			initial={{
+				height: 0,
+				opacity: 0,
+			}}
+			animate={{
+				height: 'auto',
+				opacity: 1,
+			}}
+			exit={{
+				height: 0,
+				opacity: 0,
+			}}
+			layoutId={todo.id}
+			whileHover={{
+				scale: 1.05,
+				transition: { duration: 0.05, ease: 'easeInOut' },
+			}}
+			whileTap={{
+				scale: 1.1,
+			}}
 		>
-			<Fab
-				aria-label='complete'
-				size='small'
-				sx={{
-					mr: 3,
-					...(completed && checkedStyle),
-				}}
-			>
-				{completed && <CheckIcon />}
-			</Fab>
-			<Typography
-				variant='body1'
-				sx={{
-					textDecoration: completed ? 'line-through' : undefined,
-					color: completed ? theme.palette.primary.dark : theme.palette.primary.contrastText,
-				}}
-			>
-				{title}
-			</Typography>
+			<Box display='flex' alignItems='center' p={3}>
+				<Fab
+					aria-label='complete'
+					size='small'
+					sx={{
+						mr: 3,
+						...(completed && checkedStyle),
+					}}
+				>
+					{completed && <CheckIcon />}
+				</Fab>
+				<Typography
+					variant='body1'
+					sx={{
+						textDecoration: completed ? 'line-through' : undefined,
+						color: completed ? theme.palette.primary.dark : theme.palette.primary.contrastText,
+					}}
+				>
+					{title}
+				</Typography>
+			</Box>
 		</Box>
 	);
 };

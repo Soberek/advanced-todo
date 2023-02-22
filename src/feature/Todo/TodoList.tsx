@@ -8,6 +8,9 @@ import { useTheme } from '@mui/material';
 import { useTypedSelector } from '../../hooks/reduxTypedHooks';
 import type { Todo } from '../../store';
 
+//
+import { AnimatePresence } from 'framer-motion';
+
 const TodoList = () => {
 	const theme = useTheme();
 	const todos = useTypedSelector((state) => state.todos.todos);
@@ -31,6 +34,7 @@ const TodoList = () => {
 			</Box>
 
 			{/* Todos */}
+
 			<Box
 				sx={{
 					'& > *': {
@@ -38,14 +42,15 @@ const TodoList = () => {
 					},
 					borderTopLeftRadius: '10px',
 					borderTopRightRadius: '10px',
-					overflow: 'hidden',
+					// overflow: 'hidden',
 				}}
 			>
-				{filtered.map((todo) => (
-					<Item key={todo.id} todo={todo} />
-				))}
+				<AnimatePresence>
+					{filtered.map((todo, idx) => (
+						<Item key={todo.id} idx={idx} todo={todo} />
+					))}
+				</AnimatePresence>
 			</Box>
-
 			{/* Todo Footer */}
 			<TodoFooter />
 		</>
