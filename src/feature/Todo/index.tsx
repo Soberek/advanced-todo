@@ -2,7 +2,7 @@ import { Box, useTheme } from '@mui/material';
 import { alpha } from '@mui/material';
 
 import TodoHeader from './TodoHeader';
-import TodoList from './TodoList';
+import TodoList from './TodoItemList';
 
 const Main = () => {
 	const theme = useTheme();

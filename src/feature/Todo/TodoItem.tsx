@@ -30,7 +30,6 @@ const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 	};
 
 	// * Animation
-
 	const variants = {
 		custom: (custom: number) => ({
 			opacity: 1,
@@ -64,11 +63,13 @@ const Item = ({ todo, idx }: { todo: Todo; idx: number }) => {
 				opacity: 0,
 			}}
 			layoutId={todo.id}
+			layout
 			whileHover={{
-				scale: 1.05,
-				backgroundColor: alpha(theme.palette.primary.light, 1),
+				scale: 1.03,
+				opacity: 1,
 				transition: { duration: 0.05, ease: 'easeInOut' },
 			}}
+			onHoverEnd={() => {}}
 			whileTap={{
 				scale: 1.1,
 			}}

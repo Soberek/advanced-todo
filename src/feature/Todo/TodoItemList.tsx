@@ -1,6 +1,6 @@
 import Item from './TodoItem';
 import AddItemInput from './TodoAddInput';
-import TodoFooter from './TodoPanel';
+import TodoPanel from './TodoPanel';
 import Box from '@mui/material/Box';
 
 import { useTheme } from '@mui/material';
@@ -33,7 +33,7 @@ const TodoList = () => {
 			</Box>
 
 			{/* Todos */}
-
+			<TodoPanel />
 			<Box
 				sx={{
 					'& > *': {
@@ -52,7 +52,6 @@ const TodoList = () => {
 			</Box>
 
 			{/* Todo Footer */}
-			<TodoFooter />
 		</>
 	);
 };

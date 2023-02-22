@@ -48,7 +48,7 @@ const AddItemInput = () => {
 	return (
 		<Box bgcolor={theme.palette.primary.light} sx={{ borderRadius: '10px' }}>
 			<Box display='flex' alignItems='center' sx={{ cursor: 'pointer' }}>
-				<Box p={3} width='15%'>
+				<Box p={3} flex='0 0'>
 					<Fab
 						aria-label='complete'
 						size='small'
@@ -61,13 +61,13 @@ const AddItemInput = () => {
 					</Fab>
 				</Box>
 
-				<Box onBlur={handleBlur} onClick={handleEdit} display='flex' width='80%'>
+				<Box onBlur={handleBlur} onClick={handleEdit} display='flex' flex='1'>
 					{!isEditing && (
 						<Typography variant='body1' color='secondary.light'>
 							Create new todo...
 						</Typography>
 					)}
-					{isEditing && <TextField onChange={handleInputChange} value={input} autoFocus sx={{ flexGrow: 1 }} />}
+					{isEditing && <TextField onChange={handleInputChange} value={input} autoFocus sx={{ flexGrow: 1, pr: 2 }} />}
 				</Box>
 			</Box>
 		</Box>

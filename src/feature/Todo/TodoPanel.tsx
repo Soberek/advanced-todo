@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material';
 
 // *Store
@@ -30,7 +30,10 @@ const TodoPanel = () => {
 		dispatch(filterActiveTodos());
 	}
 
+	// *Style
 	const theme = useTheme();
+	const matchesMobile = useMediaQuery('(min-width: 500px)');
+	console.log(matchesMobile);
 
 	return (
 		<Box
@@ -38,7 +41,8 @@ const TodoPanel = () => {
 			display='flex'
 			alignItems='center'
 			justifyContent='space-between'
-			sx={{ borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}
+			flexDirection={matchesMobile ? 'row' : 'column'}
+			sx={{ borderTopLeftRadius: '10px', borderTopRightRadius: '10px' }}
 			py={2}
 			px={3}
 			color={theme.palette.primary.contrastText}
